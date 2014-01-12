@@ -1,10 +1,11 @@
-""" remoteCV by cv not cv2
+""" remoteCV
+1. can add retry feature in timeout case
 """
 
 import gevent
 from zmq import green as zmq
 import numpy as np
-import cv
+import cv2
 import json
 import timeit
 
@@ -15,6 +16,7 @@ def debug(msg):
     global GBDEBUG
     if GBDEBUG:
         print msg
+
 
 class Server(object):
     """ broadcast vedio source to it's client"""
@@ -41,26 +43,21 @@ class Server(object):
             indx = tty/usb device id
             size = img width, high
         """
-        cv.NamedWindow('camera', 1)
-        capture = cv.CreateCameraCapture(indx)
-        cv.SetCaptureProperty(capture, cv.CV_CAP_PROP_FRAME_WIDTH, size[0])
-        cv.SetCaptureProperty(capture, cv.CV_CAP_PROP_FRAME_HEIGHT, size[1])
+        capture = cv2.VideoCapture(indx)
+        capture.set(cv2.cv.CV_CAP_PROP_FRAME_WIDTH, size[0])
+        capture.set(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT, size[1])
         self._capture = capture
 
     def capture_img(self, wait=0.5, max_img=100):
         """ capture img from img buffer and store it in img queue """
         while self._stop_imgs['capture'] >= self._cur_img['capture']:
-            img = cv.QueryFrame(self._capture)
-            tmp = cv.CreateImage(cv.GetSize(img),cv.IPL_DEPTH_8U,3)
-            cv.Copy(img,tmp)
-            arr = np.asarray(cv.GetMat(tmp), dtype=np.uint8)
-            # img context token
+            ret, img = self._capture.read()
             msg = json.dumps({
-                'size' : ','.join([str(i) for i in cv.GetSize(img)]),
+                'size' : img.shape[0:-1],
                 'code' : 'BGR',
-                'data' : arr.tolist()})
+                'data' : img.tolist()})
             self._img.append(msg)
-            # constraint  the img buf size
+            # constraint the img buf size
             if len(self._img) >= max_img:
                 self._img.pop()
             self._cur_img['capture']+=1
@@ -102,22 +99,29 @@ class Client(object):
         self._poller.register(rec, zmq.POLLIN)
         self._rec = rec
 
+
     def receive_img(self, wait=0.5, max_img=100):
         """ receive img from zmq socket """
         while self._stop_imgs['receive'] >= self._cur_img['receive']:
             socks = dict(self._poller.poll())
             if self._rec in socks and socks[self._rec] == zmq.POLLIN:
                 img = json.loads(self._rec.recv())
-                size = tuple([int(i) for i in img['size'].split(',')])
-                tmp = cv.CreateImage(size, cv.IPL_DEPTH_8U, 3)
-                arr = cv.fromarray(np.asarray(img['data'], dtype=np.uint8))
-                cv.Copy(arr, tmp)
-                self._img.append(tmp)
+                arr = np.asarray(img['data'], dtype=np.uint8)
+                self._img.append(arr)
                 if len(self._img) >= max_img:
                     self._img.pop()
                 self._cur_img['receive']+=1
                 debug("client receive img")
                 gevent.sleep(wait)
+
+
+    def fetch_img(self, wait=0.5):
+        while self._stop_imgs['show'] >= self._cur_img['show']:
+            if self._img:
+                yield self._img.pop()
+                self._cur_img['show']+=1
+                gevent.sleep(wait)
+
 
     def show_img(self, wait=0.5):
         """ show img """
@@ -125,10 +129,11 @@ class Client(object):
             if self._img:
                 tmp = self._img.pop()
                 debug("client show img")
-                cv.ShowImage("cc", tmp)
+                cv2.imshow("cc", tmp)
                 self._cur_img['show']+=1
-                cv.WaitKey(1)
+                cv2.waitKey(1)
                 gevent.sleep(wait)
+
 
 if __name__ == '__main__':
 
