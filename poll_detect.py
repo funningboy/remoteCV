@@ -7,84 +7,84 @@ import gevent
 from zmq import green as zmq
 import numpy as np
 import cv2
+import cv
 from multiprocessing.pool import ThreadPool
 from multiprocessing import Process
 from collections import deque
 from poll_camera2 import Server, Client
 import timeit
 
-class NewServer(Server):
-    """ new server """
 
-    def __init__(self, context):
-        super(NewServer, self).__init__(context)
-
-
-def detect_edge(name, img, thrs1, thrs2):
+def detect_edge(name, img):
     """ detect edge """
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    edge = cv2.Canny(gray, thrs1, thrs2, apertureSize=5)
-    vis = img.copy()
-    vis /= 2
-    vis[edge != 0] = (0, 255, 0)
-    return name, vis
+    edge = cv2.Canny(gray, 500, 1000, apertureSize=5)
+    img /= 2
+    img[edge != 0] = (0, 255, 0)
+    return name, img
 
-def detect_circle(name):
+def detect_circle(name, img):
     """ detect circle """
-    pass
-
-class NewClient(Client):
-    """ new client """
-
-    def __init__(self, context, poller):
-        super(NewClient, self).__init__(context, poller)
-
-        self._threadn = cv2.getNumberOfCPUs()
-        self._pool = ThreadPool(processes = self._threadn)
-        self._pending = deque()
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    gray = cv2.medianBlur(gray, 5)
+    circles = cv2.HoughCircles(gray, cv2.cv.CV_HOUGH_GRADIENT, 1, 20, param1=50, param2=30, minRadius=5, maxRadius=20)
+    if circles is not None:
+        circles = np.uint16(np.around(circles))
+        for i in circles[0,:]:
+            cv2.circle(img, (i[0],i[1]),i[2],(0,255,0),1)
+            cv2.circle(img, (i[0],i[1]),2,(0,0,255),3)
+    return name, img
 
 
-    def run_img(self, wait=0.5):
-        """ run img proc """
-        img_it = self.fetch_img()
-
-        for img in img_it:
-            while len(self._pending) >0 and self._pending[0].ready():
-                name, res = self._pending.popleft().get()
-
-                if name == 'proc0':
-                    cv2.imshow('thread proc0', res)
-                elif name == 'proc1':
-                    cv2.imshow('thread proc1', res)
-
-                ch = cv2.waitKey(1)
-                gevent.sleep(wait)
-
-            if len(self._pending) < self._threadn:
-                tasks = [ self._pool.apply_async(detect_edge, ('proc0', img.copy(), 200, 400)),
-                          self._pool.apply_async(detect_edge, ('proc1', img.copy(), 10, 100)) ]
-
-            [self._pending.append(task) for task in tasks]
+def detect_rectangle(name, img):
+    """ detect rectangle """
+    return name, img
 
 
-if __name__ == '__main__':
+def detect_line(name, img):
+    """ detect line """
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    edge = cv2.Canny(gray, 150, 200, apertureSize=3)
+    lines = cv2.HoughLinesP(edge, 1, np.pi/180, 150, minLineLength=100, maxLineGap=10)
+    if lines is not None:
+        for x1,y1,x2,y2 in lines[0]:
+            cv2.line(img, (x1,y1), (x2,y2), (0,255,0), 2)
+    return name, img
 
-    context = zmq.Context()
-    poller = zmq.Poller()
-    # client side
-    client = NewClient(context, poller)
-    client.setup_server('inproc://polltest1')
 
-    # server side
-    server = NewServer(context)
-    server.setup_client('inproc://polltest1')
-    server.setup_camera(0, (400,300))
+def detect_face(name, img):
+    """ detect human face """
 
-    # spawn all jobs
-    jobs = [ gevent.spawn(server.capture_img, 0.5, 100),
-             gevent.spawn(server.send_img, 0.5),
-             gevent.spawn(client.receive_img, 0.5, 100),
-             gevent.spawn(client.run_img, 0.5) ]
+    def _train_data(cascade_fn='./data/haarcascades/haarcascade_frontalface_alt.xml', nested_fn='./data/haarcascades/haarcascade_eye.xml'):
+        _cascade_fn = cv2.CascadeClassifier(cascade_fn)
+        _nested_fn  = cv2.CascadeClassifier(nested_fn)
+        return _cascade_fn, _nested_fn
 
-    gevent.joinall(jobs)
+    def _detect(img, cascade):
+        rects = cascade.detectMultiScale(gray, scaleFactor=1.3, minNeighbors=4, minSize=(30, 30), flags = cv.CV_HAAR_SCALE_IMAGE)
+        if len(rects) == 0:
+            return []
+        rects[:,2:] += rects[:,:2]
+        return rects
+
+    def _draw_rects(img, rects, color):
+        for x1, y1, x2, y2 in rects:
+            cv2.rectangle(img, (x1, y1), (x2, y2), color, 2)
+        return img
+
+    _cascade_fn, _nested_fn = _train_data()
+
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    gray = cv2.equalizeHist(gray)
+
+    rects = _detect(gray,  _cascade_fn)
+    _draw_rects(img, rects, (0, 255, 0))
+
+    for x1, y1, x2, y2 in rects:
+        roi = gray[y1:y2, x1:x2]
+        img_roi = img[y1:y2, x1:x2]
+        subrects = _detect(roi.copy(), _nested_fn)
+        img = _draw_rects(img, subrects, (255, 0, 0))
+    return name, img
+
 
