@@ -7,7 +7,7 @@ import numpy as np
 import cv
 import json
 import timeit
-
+from profile import *
 
 GBDEBUG = False
 
@@ -24,8 +24,8 @@ class Server(object):
         self._socket = self._context.socket(zmq.PUSH)
         self._img = []
         self._capture = None
-        self._stop_imgs = { 'capture' : 100,
-                            'send'    : 100 }
+        self._stop_imgs = { 'capture' : 1000,
+                            'send'    : 1000 }
         self._cur_img = { 'capture' : 0,
                           'send'    : 0 }
 
@@ -47,7 +47,7 @@ class Server(object):
         cv.SetCaptureProperty(capture, cv.CV_CAP_PROP_FRAME_HEIGHT, size[1])
         self._capture = capture
 
-    def capture_img(self, wait=0.5, max_img=100):
+    def capture_img(self, wait=0.5, max_img=1000):
         """ capture img from img buffer and store it in img queue """
         while self._stop_imgs['capture'] >= self._cur_img['capture']:
             img = cv.QueryFrame(self._capture)
@@ -86,8 +86,8 @@ class Client(object):
         self._poller  = poller
         self._img = []
         self._rec = None
-        self._stop_imgs = { 'receive' : 100,
-                            'show' : 100 }
+        self._stop_imgs = { 'receive' : 1000,
+                            'show' : 1000 }
         self._cur_img = { 'receive' : 0,
                           'show' : 0 }
 
@@ -102,7 +102,7 @@ class Client(object):
         self._poller.register(rec, zmq.POLLIN)
         self._rec = rec
 
-    def receive_img(self, wait=0.5, max_img=100):
+    def receive_img(self, wait=0.5, max_img=1000):
         """ receive img from zmq socket """
         while self._stop_imgs['receive'] >= self._cur_img['receive']:
             socks = dict(self._poller.poll())
@@ -130,24 +130,94 @@ class Client(object):
                 cv.WaitKey(1)
                 gevent.sleep(wait)
 
+
+gb_context = zmq.Context()
+gb_poller = zmq.Poller()
+gb_jobs = []
+gb_server, gb_client = None, None
+
+@profile
+def init_server():
+    global gb_context, gb_server
+    gb_server = Server(gb_context)
+    gb_server.setup_client('inproc://polltest1')
+    gb_server.setup_camera(0, (400,300))
+
+@profile
+def init_client():
+    global gb_context, gb_poller, gb_client
+    gb_client = Client(gb_context, gb_poller)
+    gb_client.setup_server('inproc://polltest1')
+
+@profile
+def run_capture_img():
+    global gb_jobs, gb_server
+    gb_jobs.append(gevent.spawn(gb_server.capture_img, 0.5, 1000))
+
+@profile
+def run_send_img():
+    global gb_jobs, gb_server
+    gb_jobs.append(gevent.spawn(gb_server.send_img, 0.5))
+
+@profile
+def run_receive_img():
+    global gb_jobs, gb_client
+    gb_jobs.append(gevent.spawn(gb_client.receive_img, 0.5, 1000))
+
+@profile
+def run_show_img():
+    global gb_jobs, gb_client
+    gb_jobs.append(gevent.spawn(gb_client.show_img, 0.5))
+
+def server_monitor(wait=10):
+    """ monitor resource usage at server side """
+    global gb_server
+
+    @profile
+    def monitor(wait=0):
+        pass
+
+    while not gb_server.is_done():
+        monitor()
+        gevent.sleep(wait)
+
+def client_monitor(wait=10):
+    """ monitor resource usage at client side """
+    global gb_client
+
+    @profile
+    def monitor(wait=0):
+        pass
+
+    while not gb_client.is_done():
+        monitor()
+        gevent.sleep(wait)
+
+def run_server_monitor():
+    global gb_jobs
+    gb_jobs.append(gevent.spawn(server_monitor, 10))
+
+def run_client_monitor():
+    global gb_jobs
+    gb_jobs.append(gevent.spawn(client_monitor, 10))
+
+def join_all():
+    global gb_jobs
+    gevent.joinall(gb_jobs)
+
+
 if __name__ == '__main__':
 
-    context = zmq.Context()
-    poller = zmq.Poller()
-    # client side
-    client = Client(context, poller)
-    client.setup_server('inproc://polltest1')
+    init_client()
+    init_server()
 
-    # server side
-    server = Server(context)
-    server.setup_client('inproc://polltest1')
-    server.setup_camera(0, (400,300))
+    run_capture_img()
+    run_send_img()
+    run_receive_img()
+    run_show_img()
 
-    # spawn all jobs
-    jobs = [ gevent.spawn(server.capture_img, 0.5, 100),
-             gevent.spawn(server.send_img, 0.5),
-             gevent.spawn(client.receive_img, 0.5, 100),
-             gevent.spawn(client.show_img, 0.5) ]
+    run_server_monitor()
+    run_client_monitor()
 
-    gevent.joinall(jobs)
+    join_all()
 
