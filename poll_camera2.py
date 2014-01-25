@@ -74,6 +74,12 @@ class Server(object):
                 debug("server send img")
                 gevent.sleep(wait)
 
+    def receive_command(self):
+        pass
+
+    def do_command(self):
+        pass
+
 
 class Client(object):
     """ client """
@@ -134,6 +140,11 @@ class Client(object):
                 cv2.waitKey(1)
                 gevent.sleep(wait)
 
+    def run_detitions(self):
+        pass
+
+    def send_command(self):
+        pass
 
 gb_context = zmq.Context()
 gb_poller = zmq.Poller()
