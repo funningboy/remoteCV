@@ -7,7 +7,6 @@ import gevent
 from zmq import green as zmq
 import numpy as np
 import cv2
-import cv
 from multiprocessing.pool import ThreadPool
 from multiprocessing import Process
 from collections import deque
@@ -52,8 +51,13 @@ def detect_line(name, img):
     return name, img
 
 
+gb_cascade_fn = None
+gb_nested_fn = None
+
 def detect_face(name, img):
     """ detect human face """
+
+    global gb_cascade_fn, gb_nested_fn
 
     def _train_data(cascade_fn='./data/haarcascades/haarcascade_frontalface_alt.xml', nested_fn='./data/haarcascades/haarcascade_eye.xml'):
         _cascade_fn = cv2.CascadeClassifier(cascade_fn)
@@ -61,7 +65,7 @@ def detect_face(name, img):
         return _cascade_fn, _nested_fn
 
     def _detect(img, cascade):
-        rects = cascade.detectMultiScale(gray, scaleFactor=1.3, minNeighbors=4, minSize=(30, 30), flags = cv.CV_HAAR_SCALE_IMAGE)
+        rects = cascade.detectMultiScale(img, scaleFactor=1.3, minNeighbors=4, minSize=(30, 30), flags = cv2.cv.CV_HAAR_SCALE_IMAGE)
         if len(rects) == 0:
             return []
         rects[:,2:] += rects[:,:2]
@@ -72,18 +76,19 @@ def detect_face(name, img):
             cv2.rectangle(img, (x1, y1), (x2, y2), color, 2)
         return img
 
-    _cascade_fn, _nested_fn = _train_data()
+    if gb_cascade_fn == None or gb_nested_fn == None:
+        gb_cascade_fn, gb_nested_fn = _train_data()
 
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     gray = cv2.equalizeHist(gray)
 
-    rects = _detect(gray,  _cascade_fn)
+    rects = _detect(gray,  gb_cascade_fn)
     _draw_rects(img, rects, (0, 255, 0))
 
     for x1, y1, x2, y2 in rects:
         roi = gray[y1:y2, x1:x2]
         img_roi = img[y1:y2, x1:x2]
-        subrects = _detect(roi.copy(), _nested_fn)
+        subrects = _detect(roi.copy(), gb_nested_fn)
         img = _draw_rects(img, subrects, (255, 0, 0))
     return name, img
 
