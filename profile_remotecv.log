@@ -1,300 +1,396 @@
 INFO:root:call func init_client
-INFO:root:  run time 0.019393 s
-INFO:root:  run mem 11471112 bytes
+INFO:root:  run time 0.020146 s
+INFO:root:  run mem 11475952 bytes
 INFO:root:call func init_server
-INFO:root:  run time 0.019951 s
-INFO:root:  run mem 11236376 bytes
+INFO:root:  run time 0.020194 s
+INFO:root:  run mem 11241216 bytes
 INFO:root:call func run_capture_img
-INFO:root:  run time 0.019524 s
-INFO:root:  run mem 11238520 bytes
+INFO:root:  run time 0.019331 s
+INFO:root:  run mem 11243360 bytes
 INFO:root:call func run_send_img
-INFO:root:  run time 0.019040 s
-INFO:root:  run mem 11240448 bytes
+INFO:root:  run time 0.020058 s
+INFO:root:  run mem 11245288 bytes
 INFO:root:call func run_receive_img
-INFO:root:  run time 0.020939 s
-INFO:root:  run mem 11242288 bytes
+INFO:root:  run time 0.019999 s
+INFO:root:  run mem 11247128 bytes
 INFO:root:call func run_img
-INFO:root:  run time 0.020207 s
-INFO:root:  run mem 11244216 bytes
+INFO:root:  run time 0.021634 s
+INFO:root:  run mem 11249056 bytes
 INFO:root:call func monitor
-INFO:root:  run time 0.067439 s
-INFO:root:  run mem 11249360 bytes
+INFO:root:  run time 0.026519 s
+INFO:root:  run mem 11254344 bytes
 INFO:root:call func monitor
-INFO:root:  run time 0.020645 s
-INFO:root:  run mem 11251464 bytes
-INFO:root:call func init_client
-INFO:root:  run time 0.019088 s
-INFO:root:  run mem 11471088 bytes
-INFO:root:call func init_server
-INFO:root:  run time 0.019599 s
-INFO:root:  run mem 11236352 bytes
-INFO:root:call func run_capture_img
-INFO:root:  run time 0.019240 s
-INFO:root:  run mem 11238496 bytes
-INFO:root:call func run_send_img
-INFO:root:  run time 0.019670 s
-INFO:root:  run mem 11240424 bytes
-INFO:root:call func run_receive_img
-INFO:root:  run time 0.021528 s
-INFO:root:  run mem 11242264 bytes
-INFO:root:call func run_img
-INFO:root:  run time 0.019681 s
-INFO:root:  run mem 11244192 bytes
+INFO:root:  run time 0.020801 s
+INFO:root:  run mem 11256344 bytes
 INFO:root:call func monitor
-INFO:root:  run time 0.025362 s
-INFO:root:  run mem 11250592 bytes
+INFO:root:  run time 0.020567 s
+INFO:root:  run mem 11252248 bytes
 INFO:root:call func monitor
-INFO:root:  run time 0.021792 s
-INFO:root:  run mem 11252440 bytes
-INFO:root:call func monitor
-INFO:root:  run time 0.020259 s
-INFO:root:  run mem 11247512 bytes
-INFO:root:call func monitor
-INFO:root:  run time 0.033745 s
-INFO:root:  run mem 11251336 bytes
-INFO:root:call func monitor
-INFO:root:  run time 0.021063 s
-INFO:root:  run mem 11248536 bytes
-INFO:root:call func monitor
-INFO:root:  run time 0.024681 s
-INFO:root:  run mem 11253496 bytes
-INFO:root:call func monitor
-INFO:root:  run time 0.020427 s
-INFO:root:  run mem 11249624 bytes
-INFO:root:call func monitor
-INFO:root:  run time 0.020741 s
-INFO:root:  run mem 11249728 bytes
-INFO:root:call func monitor
-INFO:root:  run time 0.024955 s
-INFO:root:  run mem 11252512 bytes
-INFO:root:call func monitor
-INFO:root:  run time 0.024147 s
-INFO:root:  run mem 11250752 bytes
-INFO:root:call func monitor
-INFO:root:  run time 0.020738 s
-INFO:root:  run mem 11253600 bytes
-INFO:root:call func monitor
-INFO:root:  run time 0.020081 s
-INFO:root:  run mem 11253704 bytes
-INFO:root:call func monitor
-INFO:root:  run time 0.021083 s
+INFO:root:  run time 0.032376 s
 INFO:root:  run mem 11256400 bytes
 INFO:root:call func monitor
-INFO:root:  run time 0.019995 s
-INFO:root:  run mem 11254728 bytes
+INFO:root:  run time 0.019352 s
+INFO:root:  run mem 11253272 bytes
+INFO:root:call func monitor
+INFO:root:  run time 0.023995 s
+INFO:root:  run mem 11259152 bytes
 INFO:root:call func init_client
-INFO:root:  run time 0.018881 s
-INFO:root:  run mem 11433312 bytes
+INFO:root:  run time 0.019322 s
+INFO:root:  run mem 11475952 bytes
 INFO:root:call func init_server
-INFO:root:  run time 0.019382 s
-INFO:root:  run mem 11198488 bytes
+INFO:root:  run time 0.019426 s
+INFO:root:  run mem 11241216 bytes
 INFO:root:call func run_capture_img
-INFO:root:  run time 0.019856 s
-INFO:root:  run mem 11200632 bytes
+INFO:root:  run time 0.019319 s
+INFO:root:  run mem 11243360 bytes
 INFO:root:call func run_send_img
-INFO:root:  run time 0.019479 s
-INFO:root:  run mem 11202560 bytes
+INFO:root:  run time 0.020577 s
+INFO:root:  run mem 11245288 bytes
 INFO:root:call func run_receive_img
-INFO:root:  run time 0.020542 s
-INFO:root:  run mem 11204400 bytes
-INFO:root:call func init_client
-INFO:root:  run time 0.024696 s
-INFO:root:  run mem 11433096 bytes
-INFO:root:call func init_server
-INFO:root:  run time 0.019324 s
-INFO:root:  run mem 11198272 bytes
-INFO:root:call func run_capture_img
-INFO:root:  run time 0.019720 s
-INFO:root:  run mem 11200416 bytes
-INFO:root:call func run_send_img
-INFO:root:  run time 0.019462 s
-INFO:root:  run mem 11202344 bytes
-INFO:root:call func run_receive_img
-INFO:root:  run time 0.019212 s
-INFO:root:  run mem 11204184 bytes
-INFO:root:call func init_client
-INFO:root:  run time 0.020047 s
-INFO:root:  run mem 11433184 bytes
-INFO:root:call func init_server
-INFO:root:  run time 0.019088 s
-INFO:root:  run mem 11198448 bytes
-INFO:root:call func run_capture_img
-INFO:root:  run time 0.019562 s
-INFO:root:  run mem 11200592 bytes
-INFO:root:call func run_send_img
-INFO:root:  run time 0.019393 s
-INFO:root:  run mem 11202520 bytes
-INFO:root:call func run_receive_img
-INFO:root:  run time 0.020386 s
-INFO:root:  run mem 11204360 bytes
+INFO:root:  run time 0.020439 s
+INFO:root:  run mem 11247128 bytes
 INFO:root:call func run_img
+INFO:root:  run time 0.019453 s
+INFO:root:  run mem 11249056 bytes
+INFO:root:call func monitor
+INFO:root:  run time 0.024979 s
+INFO:root:  run mem 11256288 bytes
+INFO:root:call func monitor
+INFO:root:  run time 0.023716 s
+INFO:root:  run mem 11257384 bytes
+INFO:root:call func monitor
+INFO:root:  run time 0.024667 s
+INFO:root:  run mem 11252528 bytes
+INFO:root:call func monitor
+INFO:root:  run time 0.021317 s
+INFO:root:  run mem 11257704 bytes
+INFO:root:call func monitor
+INFO:root:  run time 0.020756 s
+INFO:root:  run mem 11253552 bytes
+INFO:root:call func monitor
+INFO:root:  run time 0.021526 s
+INFO:root:  run mem 11253952 bytes
+INFO:root:call func monitor
+INFO:root:  run time 0.019104 s
+INFO:root:  run mem 11256504 bytes
+INFO:root:call func monitor
+INFO:root:  run time 0.022196 s
+INFO:root:  run mem 11256904 bytes
+INFO:root:call func monitor
+INFO:root:  run time 0.020211 s
+INFO:root:  run mem 11259384 bytes
+INFO:root:call func monitor
+INFO:root:  run time 0.021077 s
+INFO:root:  run mem 11257824 bytes
+INFO:root:call func init_client
+INFO:root:  run time 0.019700 s
+INFO:root:  run mem 11475952 bytes
+INFO:root:call func init_server
+INFO:root:  run time 0.019625 s
+INFO:root:  run mem 11241216 bytes
+INFO:root:call func run_capture_img
+INFO:root:  run time 0.019560 s
+INFO:root:  run mem 11243360 bytes
+INFO:root:call func run_send_img
+INFO:root:  run time 0.024669 s
+INFO:root:  run mem 11245288 bytes
+INFO:root:call func run_receive_img
+INFO:root:  run time 0.021470 s
+INFO:root:  run mem 11247128 bytes
+INFO:root:call func run_img
+INFO:root:  run time 0.021902 s
+INFO:root:  run mem 11249056 bytes
+INFO:root:call func monitor
+INFO:root:  run time 0.025244 s
+INFO:root:  run mem 11254968 bytes
+INFO:root:call func monitor
+INFO:root:  run time 0.021179 s
+INFO:root:  run mem 11258312 bytes
+INFO:root:call func monitor
+INFO:root:  run time 0.020482 s
+INFO:root:  run mem 11252248 bytes
+INFO:root:call func monitor
+INFO:root:  run time 0.021494 s
+INFO:root:  run mem 11256560 bytes
+INFO:root:call func monitor
+INFO:root:  run time 0.020575 s
+INFO:root:  run mem 11253272 bytes
+INFO:root:call func monitor
+INFO:root:  run time 0.024018 s
+INFO:root:  run mem 11258240 bytes
+INFO:root:call func monitor
+INFO:root:  run time 0.021710 s
+INFO:root:  run mem 11254640 bytes
+INFO:root:call func monitor
+INFO:root:  run time 0.021348 s
+INFO:root:  run mem 11254880 bytes
+INFO:root:call func monitor
+INFO:root:  run time 0.020442 s
+INFO:root:  run mem 11257528 bytes
+INFO:root:call func init_client
+INFO:root:  run time 0.018816 s
+INFO:root:  run mem 11475960 bytes
+INFO:root:call func init_server
+INFO:root:  run time 0.019683 s
+INFO:root:  run mem 11241224 bytes
+INFO:root:call func run_capture_img
+INFO:root:  run time 0.019605 s
+INFO:root:  run mem 11243368 bytes
+INFO:root:call func run_send_img
+INFO:root:  run time 0.020775 s
+INFO:root:  run mem 11245296 bytes
+INFO:root:call func run_receive_img
+INFO:root:  run time 0.020277 s
+INFO:root:  run mem 11247136 bytes
+INFO:root:call func run_img
+INFO:root:  run time 0.019459 s
+INFO:root:  run mem 11249064 bytes
+INFO:root:call func monitor
+INFO:root:  run time 0.032227 s
+INFO:root:  run mem 11253928 bytes
+INFO:root:call func monitor
+INFO:root:  run time 0.020731 s
+INFO:root:  run mem 11257504 bytes
+INFO:root:call func monitor
+INFO:root:  run time 0.020818 s
+INFO:root:  run mem 11252536 bytes
+INFO:root:call func monitor
+INFO:root:  run time 0.028421 s
+INFO:root:  run mem 11257256 bytes
+INFO:root:call func init_client
+INFO:root:  run time 0.019222 s
+INFO:root:  run mem 11475928 bytes
+INFO:root:call func init_server
+INFO:root:  run time 0.019557 s
+INFO:root:  run mem 11241192 bytes
+INFO:root:call func run_capture_img
+INFO:root:  run time 0.019967 s
+INFO:root:  run mem 11243336 bytes
+INFO:root:call func run_send_img
+INFO:root:  run time 0.025280 s
+INFO:root:  run mem 11245264 bytes
+INFO:root:call func run_receive_img
+INFO:root:  run time 0.019499 s
+INFO:root:  run mem 11247104 bytes
+INFO:root:call func run_img
+INFO:root:  run time 0.020138 s
+INFO:root:  run mem 11249032 bytes
+INFO:root:call func monitor
+INFO:root:  run time 0.037066 s
+INFO:root:  run mem 11254456 bytes
+INFO:root:call func monitor
+INFO:root:  run time 0.022235 s
+INFO:root:  run mem 11258264 bytes
+INFO:root:call func monitor
+INFO:root:  run time 0.020568 s
+INFO:root:  run mem 11252504 bytes
+INFO:root:call func monitor
+INFO:root:  run time 0.025577 s
+INFO:root:  run mem 11257600 bytes
+INFO:root:call func monitor
+INFO:root:  run time 0.020594 s
+INFO:root:  run mem 11253528 bytes
+INFO:root:call func monitor
+INFO:root:  run time 0.022173 s
+INFO:root:  run mem 11253848 bytes
+INFO:root:call func init_client
+INFO:root:  run time 0.019502 s
+INFO:root:  run mem 11476408 bytes
+INFO:root:call func init_server
+INFO:root:  run time 0.019332 s
+INFO:root:  run mem 11241672 bytes
+INFO:root:call func run_capture_img
+INFO:root:  run time 0.019325 s
+INFO:root:  run mem 11243816 bytes
+INFO:root:call func run_send_img
+INFO:root:  run time 0.019447 s
+INFO:root:  run mem 11245744 bytes
+INFO:root:call func run_receive_img
+INFO:root:  run time 0.019957 s
+INFO:root:  run mem 11247584 bytes
+INFO:root:call func run_img
+INFO:root:  run time 0.019273 s
+INFO:root:  run mem 11249512 bytes
+INFO:root:call func monitor
+INFO:root:  run time 0.031857 s
+INFO:root:  run mem 11255144 bytes
+INFO:root:call func monitor
+INFO:root:  run time 0.026750 s
+INFO:root:  run mem 11257712 bytes
+INFO:root:call func init_client
+INFO:root:  run time 0.019999 s
+INFO:root:  run mem 11475992 bytes
+INFO:root:call func init_server
+INFO:root:  run time 0.020400 s
+INFO:root:  run mem 11241256 bytes
+INFO:root:call func run_capture_img
+INFO:root:  run time 0.020360 s
+INFO:root:  run mem 11243400 bytes
+INFO:root:call func run_send_img
 INFO:root:  run time 0.024691 s
-INFO:root:  run mem 11206288 bytes
-INFO:root:call func monitor
-INFO:root:  run time 0.020401 s
-INFO:root:  run mem 11252192 bytes
-INFO:root:call func monitor
-INFO:root:  run time 0.020652 s
-INFO:root:  run mem 11252240 bytes
-INFO:root:call func init_client
-INFO:root:  run time 0.019149 s
-INFO:root:  run mem 11433184 bytes
-INFO:root:call func init_server
-INFO:root:  run time 0.020629 s
-INFO:root:  run mem 11198448 bytes
-INFO:root:call func run_capture_img
-INFO:root:  run time 0.019079 s
-INFO:root:  run mem 11200592 bytes
-INFO:root:call func run_send_img
-INFO:root:  run time 0.018685 s
-INFO:root:  run mem 11202520 bytes
+INFO:root:  run mem 11245328 bytes
 INFO:root:call func run_receive_img
-INFO:root:  run time 0.021425 s
-INFO:root:  run mem 11204360 bytes
+INFO:root:  run time 0.019812 s
+INFO:root:  run mem 11247168 bytes
 INFO:root:call func run_img
-INFO:root:  run time 0.019385 s
-INFO:root:  run mem 11206288 bytes
+INFO:root:  run time 0.022039 s
+INFO:root:  run mem 11249096 bytes
 INFO:root:call func monitor
-INFO:root:  run time 0.020603 s
-INFO:root:  run mem 11252192 bytes
+INFO:root:  run time 0.026359 s
+INFO:root:  run mem 11256264 bytes
 INFO:root:call func monitor
-INFO:root:  run time 0.019954 s
-INFO:root:  run mem 11252320 bytes
+INFO:root:  run time 0.023200 s
+INFO:root:  run mem 11260792 bytes
 INFO:root:call func init_client
-INFO:root:  run time 0.019925 s
-INFO:root:  run mem 11433200 bytes
+INFO:root:  run time 0.019928 s
+INFO:root:  run mem 11475984 bytes
 INFO:root:call func init_server
-INFO:root:  run time 0.019545 s
-INFO:root:  run mem 11198464 bytes
+INFO:root:  run time 0.019570 s
+INFO:root:  run mem 11241248 bytes
 INFO:root:call func run_capture_img
-INFO:root:  run time 0.023658 s
-INFO:root:  run mem 11200608 bytes
+INFO:root:  run time 0.020248 s
+INFO:root:  run mem 11243392 bytes
 INFO:root:call func run_send_img
-INFO:root:  run time 0.019680 s
-INFO:root:  run mem 11202536 bytes
+INFO:root:  run time 0.019346 s
+INFO:root:  run mem 11245320 bytes
 INFO:root:call func run_receive_img
-INFO:root:  run time 0.018956 s
-INFO:root:  run mem 11204376 bytes
+INFO:root:  run time 0.021406 s
+INFO:root:  run mem 11247160 bytes
 INFO:root:call func run_img
-INFO:root:  run time 0.019586 s
-INFO:root:  run mem 11206304 bytes
+INFO:root:  run time 0.019875 s
+INFO:root:  run mem 11249088 bytes
 INFO:root:call func monitor
-INFO:root:  run time 0.019350 s
-INFO:root:  run mem 11252256 bytes
+INFO:root:  run time 0.036182 s
+INFO:root:  run mem 11254200 bytes
 INFO:root:call func monitor
-INFO:root:  run time 0.019241 s
-INFO:root:  run mem 11252304 bytes
+INFO:root:  run time 0.021493 s
+INFO:root:  run mem 11261008 bytes
 INFO:root:call func init_client
-INFO:root:  run time 0.019328 s
-INFO:root:  run mem 11433200 bytes
+INFO:root:  run time 0.019196 s
+INFO:root:  run mem 11475984 bytes
 INFO:root:call func init_server
-INFO:root:  run time 0.020307 s
-INFO:root:  run mem 11198464 bytes
+INFO:root:  run time 0.019890 s
+INFO:root:  run mem 11241248 bytes
 INFO:root:call func run_capture_img
-INFO:root:  run time 0.019724 s
-INFO:root:  run mem 11200608 bytes
+INFO:root:  run time 0.019634 s
+INFO:root:  run mem 11243392 bytes
 INFO:root:call func run_send_img
-INFO:root:  run time 0.019900 s
-INFO:root:  run mem 11202536 bytes
+INFO:root:  run time 0.020685 s
+INFO:root:  run mem 11245320 bytes
 INFO:root:call func run_receive_img
-INFO:root:  run time 0.021278 s
-INFO:root:  run mem 11204376 bytes
+INFO:root:  run time 0.020708 s
+INFO:root:  run mem 11247160 bytes
 INFO:root:call func run_img
-INFO:root:  run time 0.019372 s
-INFO:root:  run mem 11206304 bytes
+INFO:root:  run time 0.019279 s
+INFO:root:  run mem 11249088 bytes
 INFO:root:call func monitor
-INFO:root:  run time 0.019761 s
-INFO:root:  run mem 11252256 bytes
+INFO:root:  run time 0.030117 s
+INFO:root:  run mem 11253984 bytes
 INFO:root:call func monitor
-INFO:root:  run time 0.019701 s
-INFO:root:  run mem 11252304 bytes
+INFO:root:  run time 0.019568 s
+INFO:root:  run mem 11261488 bytes
 INFO:root:call func init_client
-INFO:root:  run time 0.019105 s
-INFO:root:  run mem 11433192 bytes
+INFO:root:  run time 0.019527 s
+INFO:root:  run mem 11477544 bytes
 INFO:root:call func init_server
-INFO:root:  run time 0.020746 s
-INFO:root:  run mem 11198456 bytes
+INFO:root:  run time 0.019995 s
+INFO:root:  run mem 11242808 bytes
 INFO:root:call func run_capture_img
-INFO:root:  run time 0.020009 s
-INFO:root:  run mem 11200600 bytes
+INFO:root:  run time 0.019269 s
+INFO:root:  run mem 11244952 bytes
 INFO:root:call func run_send_img
-INFO:root:  run time 0.019418 s
-INFO:root:  run mem 11202528 bytes
+INFO:root:  run time 0.019747 s
+INFO:root:  run mem 11246880 bytes
 INFO:root:call func run_receive_img
-INFO:root:  run time 0.019762 s
-INFO:root:  run mem 11204368 bytes
+INFO:root:  run time 0.019985 s
+INFO:root:  run mem 11248720 bytes
 INFO:root:call func run_img
-INFO:root:  run time 0.020946 s
-INFO:root:  run mem 11206296 bytes
+INFO:root:  run time 0.020942 s
+INFO:root:  run mem 11250648 bytes
 INFO:root:call func monitor
-INFO:root:  run time 0.020024 s
-INFO:root:  run mem 11207552 bytes
+INFO:root:  run time 0.027211 s
+INFO:root:  run mem 11260424 bytes
 INFO:root:call func monitor
-INFO:root:  run time 0.020316 s
-INFO:root:  run mem 11207600 bytes
-INFO:root:call func monitor
-INFO:root:  run time 0.019855 s
-INFO:root:  run mem 11208472 bytes
-INFO:root:call func monitor
-INFO:root:  run time 0.020576 s
-INFO:root:  run mem 11208520 bytes
+INFO:root:  run time 0.027357 s
+INFO:root:  run mem 11262408 bytes
 INFO:root:call func init_client
-INFO:root:  run time 0.020197 s
-INFO:root:  run mem 11433184 bytes
+INFO:root:  run time 0.019337 s
+INFO:root:  run mem 11477496 bytes
 INFO:root:call func init_server
-INFO:root:  run time 0.021229 s
-INFO:root:  run mem 11198448 bytes
+INFO:root:  run time 0.024719 s
+INFO:root:  run mem 11242760 bytes
 INFO:root:call func run_capture_img
-INFO:root:  run time 0.019067 s
-INFO:root:  run mem 11200592 bytes
+INFO:root:  run time 0.018958 s
+INFO:root:  run mem 11244904 bytes
 INFO:root:call func run_send_img
-INFO:root:  run time 0.019534 s
-INFO:root:  run mem 11202520 bytes
+INFO:root:  run time 0.020585 s
+INFO:root:  run mem 11246832 bytes
 INFO:root:call func run_receive_img
-INFO:root:  run time 0.020853 s
-INFO:root:  run mem 11204360 bytes
+INFO:root:  run time 0.020205 s
+INFO:root:  run mem 11248672 bytes
 INFO:root:call func run_img
-INFO:root:  run time 0.019176 s
-INFO:root:  run mem 11206288 bytes
+INFO:root:  run time 0.022172 s
+INFO:root:  run mem 11250600 bytes
 INFO:root:call func monitor
-INFO:root:  run time 0.020185 s
-INFO:root:  run mem 11207544 bytes
+INFO:root:  run time 0.022911 s
+INFO:root:  run mem 11261064 bytes
 INFO:root:call func monitor
-INFO:root:  run time 0.020045 s
-INFO:root:  run mem 11207592 bytes
+INFO:root:  run time 0.024780 s
+INFO:root:  run mem 11263576 bytes
+INFO:root:call func init_client
+INFO:root:  run time 0.019283 s
+INFO:root:  run mem 11477496 bytes
+INFO:root:call func init_server
+INFO:root:  run time 0.019608 s
+INFO:root:  run mem 11242760 bytes
+INFO:root:call func run_capture_img
+INFO:root:  run time 0.019426 s
+INFO:root:  run mem 11244904 bytes
+INFO:root:call func run_send_img
+INFO:root:  run time 0.020780 s
+INFO:root:  run mem 11246832 bytes
+INFO:root:call func run_receive_img
+INFO:root:  run time 0.020692 s
+INFO:root:  run mem 11248672 bytes
+INFO:root:call func run_img
+INFO:root:  run time 0.020287 s
+INFO:root:  run mem 11250600 bytes
 INFO:root:call func monitor
-INFO:root:  run time 0.019667 s
-INFO:root:  run mem 11208464 bytes
+INFO:root:  run time 0.027384 s
+INFO:root:  run mem 11255680 bytes
 INFO:root:call func monitor
-INFO:root:  run time 0.019778 s
-INFO:root:  run mem 11208512 bytes
+INFO:root:  run time 0.047316 s
+INFO:root:  run mem 11259288 bytes
 INFO:root:call func monitor
-INFO:root:  run time 0.019382 s
-INFO:root:  run mem 11209552 bytes
+INFO:root:  run time 0.021274 s
+INFO:root:  run mem 11254352 bytes
 INFO:root:call func monitor
-INFO:root:  run time 0.019553 s
-INFO:root:  run mem 11209600 bytes
+INFO:root:  run time 0.055876 s
+INFO:root:  run mem 11258632 bytes
+INFO:root:call func init_client
+INFO:root:  run time 0.019558 s
+INFO:root:  run mem 11477488 bytes
+INFO:root:call func init_server
+INFO:root:  run time 0.019645 s
+INFO:root:  run mem 11242752 bytes
+INFO:root:call func run_capture_img
+INFO:root:  run time 0.019505 s
+INFO:root:  run mem 11244896 bytes
+INFO:root:call func run_send_img
+INFO:root:  run time 0.021618 s
+INFO:root:  run mem 11246824 bytes
+INFO:root:call func run_receive_img
+INFO:root:  run time 0.019236 s
+INFO:root:  run mem 11248664 bytes
+INFO:root:call func run_img
+INFO:root:  run time 0.019259 s
+INFO:root:  run mem 11250592 bytes
 INFO:root:call func monitor
-INFO:root:  run time 0.020635 s
-INFO:root:  run mem 11210576 bytes
+INFO:root:  run time 0.033501 s
+INFO:root:  run mem 11255736 bytes
 INFO:root:call func monitor
-INFO:root:  run time 0.019762 s
-INFO:root:  run mem 11210624 bytes
+INFO:root:  run time 0.019665 s
+INFO:root:  run mem 11259488 bytes
 INFO:root:call func monitor
-INFO:root:  run time 0.020576 s
-INFO:root:  run mem 11211664 bytes
-INFO:root:call func monitor
-INFO:root:  run time 0.020140 s
-INFO:root:  run mem 11211712 bytes
-INFO:root:call func monitor
-INFO:root:  run time 0.025812 s
-INFO:root:  run mem 11212688 bytes
-INFO:root:call func monitor
-INFO:root:  run time 0.020473 s
-INFO:root:  run mem 11212736 bytes
-INFO:root:call func monitor
-INFO:root:  run time 0.020850 s
-INFO:root:  run mem 11213776 bytes
-INFO:root:call func monitor
-INFO:root:  run time 0.023243 s
-INFO:root:  run mem 11213904 bytes
+INFO:root:  run time 0.019360 s
+INFO:root:  run mem 11254344 bytes

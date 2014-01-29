@@ -40,13 +40,28 @@ def detect_rectangle(name, img):
     return name, img
 
 
-def detect_line(name, img):
-    """ detect line """
+def detect_lineP(name, img):
+    """ detect lineP """
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     edge = cv2.Canny(gray, 150, 200, apertureSize=3)
     lines = cv2.HoughLinesP(edge, 1, np.pi/180, 150, minLineLength=100, maxLineGap=10)
     if lines is not None:
         for x1,y1,x2,y2 in lines[0]:
+            cv2.line(img, (x1,y1), (x2,y2), (0,255,0), 2)
+    return name, img
+
+
+def detect_line(name, img):
+    """ detect line """
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    edge = cv2.Canny(gray, 150, 200, apertureSize=3)
+    lines = cv2.HoughLines(edge, 2, np.pi/180, 150)
+    if lines is not None:
+        for rho, theta in lines[0]:
+            a, b = np.cos(theta), np.sin(theta)
+            x0, y0 = a * rho, b * rho
+            x1, y1 = int(x0 + 1000*(-b)), int(y0 + 1000*(a))
+            x2, y2 = int(y0 - 1000*(-b)), int(y0 - 1000*(a))
             cv2.line(img, (x1,y1), (x2,y2), (0,255,0), 2)
     return name, img
 
