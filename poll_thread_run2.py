@@ -49,7 +49,7 @@ class NewClient(Client):
 
             if len(self._pending) < self._threadn:
                 tasks = [ self._pool.apply_async(detect_edge, ('detect_edge', img.copy())),
-                          self._pool.apply_async(detect_line, ('detect_line', img.copy())),
+                          self._pool.apply_async(detect_line, ('detect_lineP', img.copy())),
                           self._pool.apply_async(detect_circle, ('detect_circle', img.copy())),
                           self._pool.apply_async(detect_face, ('detect_face', img.copy())) ]
 

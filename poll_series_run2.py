@@ -34,7 +34,7 @@ class NewClient(Client):
         img_it = self.fetch_img()
 
         task_map = { 'detect_edge' : detect_edge,
-                     'detect_line' : detect_line,
+                     'detect_line' : detect_lineP,
                      'detect_circle': detect_circle,
                      'detect_face' : detect_face }
 

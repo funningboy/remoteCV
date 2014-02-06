@@ -41,10 +41,10 @@ def detect_rectangle(name, img):
 
 
 def detect_lineP(name, img):
-    """ detect lineP """
+    """ detect piece lineP """
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     edge = cv2.Canny(gray, 150, 200, apertureSize=3)
-    lines = cv2.HoughLinesP(edge, 1, np.pi/180, 150, minLineLength=100, maxLineGap=10)
+    lines = cv2.HoughLinesP(edge, 1, np.pi/180, 150, minLineLength=10, maxLineGap=10)
     if lines is not None:
         for x1,y1,x2,y2 in lines[0]:
             cv2.line(img, (x1,y1), (x2,y2), (0,255,0), 2)
@@ -52,7 +52,7 @@ def detect_lineP(name, img):
 
 
 def detect_line(name, img):
-    """ detect line """
+    """ detect horizontal line """
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     edge = cv2.Canny(gray, 150, 200, apertureSize=3)
     lines = cv2.HoughLines(edge, 2, np.pi/180, 150)
@@ -86,9 +86,9 @@ def detect_face(name, img):
         rects[:,2:] += rects[:,:2]
         return rects
 
-    def _draw_rects(img, rects, color):
+    def _draw_rects(img, rects):
         for x1, y1, x2, y2 in rects:
-            cv2.rectangle(img, (x1, y1), (x2, y2), color, 2)
+            cv2.rectangle(img, (x1, y1), (x2, y2), (255, 0, 0), 2)
         return img
 
     if gb_cascade_fn == None or gb_nested_fn == None:
@@ -98,13 +98,13 @@ def detect_face(name, img):
     gray = cv2.equalizeHist(gray)
 
     rects = _detect(gray,  gb_cascade_fn)
-    _draw_rects(img, rects, (0, 255, 0))
+    _draw_rects(img, rects)
 
     for x1, y1, x2, y2 in rects:
         roi = gray[y1:y2, x1:x2]
         img_roi = img[y1:y2, x1:x2]
         subrects = _detect(roi.copy(), gb_nested_fn)
-        img = _draw_rects(img, subrects, (255, 0, 0))
+        img = _draw_rects(img, subrects)
     return name, img
 
 
