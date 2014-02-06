@@ -1,7 +1,7 @@
 
 this is an example about how to use remote object detection based on openCV and zeromq framework.
 
-<img src='https://'>
+<img src='https://raw2.github.com/funningboy/remoteCV/master/img/results.png'>
 
 ##requirements
 - opencv(python) as cv(opencv) and cv2(numpy)
